@@ -1,10 +1,10 @@
 # Scraper for the OCCRP web site.
 # The goal is not to download all HTML, but only PDFs & other documents
 # linked from the page as proof.
-name: kg_kloop_headers
+name: Akipress_headers
 
 # A title for display in the UI:
-description: 'Headers from articles on Kloop.kg'
+description: 'Headers from articles on Akipress'
 
 # Uncomment to run this scraper automatically:
 schedule: monthly
@@ -17,7 +17,7 @@ pipeline:
     method: seed
     params:
       urls:
-        - https://kloop.kg/page/2/
+        - https://akipress.org/
     handle:
       pass: fetch
 
@@ -28,8 +28,8 @@ pipeline:
       # These rules specify which pages should be scraped or included:
       rules:
         or:
-          - pattern: 'https://kloop.kg/blog/'
-          - pattern: 'https://kloop.kg/page/2/$'
+          - pattern: 'https://akipress.org/news/'
+          - pattern: 'https://akipress.org/$'
     handle:
       pass: parse
 
@@ -39,7 +39,7 @@ pipeline:
     params:
       store:
         and:
-          - pattern: 'https://kloop.kg/blog/'
+          - pattern: 'https://akipress.org/news/'
     handle:
       # this makes it a recursive web crawler:
       store: extractdata
@@ -47,7 +47,7 @@ pipeline:
   
   extractdata:
     # Parse the scraped pages to extract useful information
-    method: example.kloop_headers:extractdata
+    method: example.Aki_headers:extractdata
     handle:
       pass: store
 
@@ -55,6 +55,6 @@ pipeline:
     # Store the crawled documents to a directory
     method: db
     params:
-      table: "kg_kloop_headers"
+      table: "Akipress_headers"
       unique:
         - url
