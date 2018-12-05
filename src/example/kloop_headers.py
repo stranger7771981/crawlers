@@ -14,9 +14,8 @@ def extractdata(context, data):
     article_data = {
         "url": response.url,
         "header": header,
-        "autor": autor,
-        "picture": picture
-    }
+		"picture": picture,
+        "autor": autor}
 
 
     if article_data["header"] is not None:
