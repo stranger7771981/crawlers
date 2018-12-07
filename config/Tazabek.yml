@@ -17,7 +17,7 @@ pipeline:
     method: seed
     params:
       urls:
-        - http://www.tazabek.kg/
+        - http://www.tazabek.kg/news/
     handle:
       pass: fetch
 
