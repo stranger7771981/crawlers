@@ -8,13 +8,11 @@ def extractdata(context, data):
     # Parse the rest of the page to extract structured data.
 
     header = _gettext(page.xpath('.//h2[@class='title]''))
-    #autor = _gettext(page.xpath('.//header/div/div/a/text()'))
     picture = _gettext(page.xpath('.//img[@class='img-responsive']/@src'))
 	
     article_data = {
         "url": response.url,
         "header": header,
-		#"autor": autor,
 		"picture": picture
     }
 
